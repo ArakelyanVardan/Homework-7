@@ -1,0 +1,13 @@
+let urls = [
+    https: 'valid url 1',
+    https: 'valid url 2',
+    https: 'invalid url'
+];
+console.log(urls);
+Promise.all(urls.map(url => fetch(url).catch((err) =>
+        new Promise((resolve) => resolve(err)))))
+    .then(responses => {
+        for (let response of responses) {
+            alert(response);
+        }
+    });
